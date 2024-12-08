@@ -6,8 +6,10 @@ import "./index.css"
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Home from './routes/home'
-import NewPost from './routes/newPost'
+import Home from './routes/Home/Home'
+import Posts from './routes/Posts/Posts'
+import NewPost from "./routes/Posts/NewPosts"
+import OldPosts from "./routes/Posts/OldPosts"
 
 import reportWebVitals from './reportWebVitals';
 
@@ -21,8 +23,17 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path:"/new",
-        element: <NewPost />
+        path:"/Posts",
+        element: <Posts />,
+        children: [ {
+          path: "NewPosts",
+          element: <NewPost />
+        },
+        {
+          path: "OldPosts",
+          element: <OldPosts />
+        }
+        ]
       }
     ]
   }
